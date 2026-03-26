@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spam classifier</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+         
+        <h1 class="title">spam classifier</h1>
+
+        <form action="/predict" method="post" class="form-box" >
+            <textarea name="message" class="input-box" placeholder="Type your message here..." required><%=message%></textarea>
+            <button type="submit" class="btn">Check Message</button>   
+        </form>
+         <form action="/"   method="GET">
+                <button type="submit"  class="btn btn-2" style="  margin-top: 10px;     background-color: green;">Check Again</button>
+            </form>
+
+        <div class="result-box">
+            <h3>This message is : <%=mess %></h3>
+            
+        </div>
+        
+    
+    </div>
+
+</body>
+</html>

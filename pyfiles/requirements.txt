@@ -1,0 +1,12 @@
+Flask==3.1.2
+scikit-learn==1.5.1
+numpy==2.3.4
+scipy==1.16.3
+joblib==1.5.2
+threadpoolctl==3.6.0
+blinker==1.9.0
+click==8.3.0
+itsdangerous==2.2.0
+Jinja2==3.1.6
+MarkupSafe==3.0.3
+Werkzeug==3.1.3
