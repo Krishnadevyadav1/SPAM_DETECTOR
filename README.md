@@ -1,7 +1,10 @@
 # Spam Detector
 
-A simple spam message detection project with:
+Spam Detector is a machine learning web application that classifies text messages as `SPAM` or `NOT SPAM`. It combines a Node.js and Express frontend for user interaction with a Flask API that loads a trained `scikit-learn` model and returns predictions in real time.
 
+This project is designed to demonstrate how a trained ML model can be integrated into a full-stack application with a simple browser-based interface.
+
+## Features
 - A Node.js + Express frontend
 - A Flask prediction API
 - A trained `scikit-learn` model saved as `pyfiles/model.pkl`
