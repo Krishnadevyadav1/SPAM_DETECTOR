@@ -1,4 +1,6 @@
 node_modules/
+client/node_modules/
+client/dist/
 .env
 
 
@@ -16,3 +18,4 @@ __pycache__/
 *.so
 
 .ipynb_checkpoints/
+*.log
