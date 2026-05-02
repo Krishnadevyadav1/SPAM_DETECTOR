@@ -1,91 +1,61 @@
 # Spam Detector
 
-Spam Detector is a machine learning web application that classifies text messages as `SPAM` or `NOT SPAM`. The project now uses a React frontend and a Flask API backed by a trained `scikit-learn` model.
+Spam Detector is a machine learning web application that classifies text messages as `SPAM` or `NOT SPAM`. It uses a React + Vite frontend and a Flask backend powered by a trained `scikit-learn` model.
 
 ## Stack
 
-- React + Vite frontend in `client/`
-- Flask prediction API in `pyfiles/`
-- Trained `scikit-learn` model in `pyfiles/model.pkl`
+- React + Vite frontend in `frontend/`
+- Flask prediction API in `backend/`
+- Trained model in `backend/model.pkl`
 
 ## Project Structure
 
 ```text
-spam/
-|-- client/
+SPAM_DETECTOR/
+|-- frontend/
 |   |-- src/
 |   |-- index.html
 |   |-- package.json
 |   |-- vite.config.js
-|-- pyfiles/
+|-- backend/
 |   |-- app.py
 |   |-- model.pkl
 |   |-- requirements.txt
 |-- Notebook/
-|   |-- spam classifier1.ipynb
+|-- spam.tsv
 ```
 
-## How It Works
-
-1. The React app runs on `http://localhost:5173`.
-2. The Flask API runs on `http://localhost:5000`.
-3. React sends the entered message to `POST /predict`.
-4. Flask loads the model and returns a JSON response with the prediction result.
-
-## Installation
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/Krishnadevyadav1/SPAM_DETECTOR.git
-cd SPAM_DETECTOR
-```
-
-### 2. Install frontend dependencies
-
-```powershell
-cd client
-npm install
-```
-
-### 3. Create and activate a Python virtual environment
-
-```powershell
-python -m venv .venv
-.venv\Scripts\activate
-```
-
-### 4. Install backend dependencies
-
-```powershell
-pip install -r pyfiles/requirements.txt
-```
-
-## Run the Project
+## Run Locally
 
 Use two terminals.
 
-### Terminal 1: Start the Flask API
+### Backend
 
 ```powershell
-cd pyfiles
+cd backend
+python -m venv ..\.venv
+..\.venv\Scripts\activate
+pip install -r requirements.txt
 python app.py
 ```
 
-### Terminal 2: Start the React app
+The Flask API runs at `http://localhost:5000`.
+
+### Frontend
 
 ```powershell
-cd client
+cd frontend
+npm install
 npm run dev
 ```
 
-Then open `http://localhost:5173`.
+The React app runs at `http://localhost:5173`.
 
-## API Response
+## API
 
 `POST /predict`
 
-Request body:
+Request:
 
 ```json
 {
@@ -93,7 +63,7 @@ Request body:
 }
 ```
 
-Response body:
+Response:
 
 ```json
 {
@@ -102,9 +72,55 @@ Response body:
 }
 ```
 
+## Deployment
+
+### Frontend on Vercel
+
+Set the Vercel root directory to:
+
+```text
+frontend
+```
+
+Use:
+
+```text
+Build Command: npm run build
+Output Directory: dist
+Install Command: npm install
+```
+
+Add this Vercel environment variable after deploying the backend:
+
+```text
+VITE_API_URL=https://your-render-backend-url.onrender.com/predict
+```
+
+### Backend on Render
+
+Set the Render root directory to:
+
+```text
+backend
+```
+
+Use:
+
+```text
+Build Command: pip install -r requirements.txt
+Start Command: python app.py
+```
+
+Add this Render environment variable:
+
+```text
+FRONTEND_ORIGIN=https://your-vercel-frontend-url.vercel.app
+```
+
 ## Notes
 
-- Run the Flask app from inside `pyfiles/` so `model.pkl` is found correctly.
+- Run the Flask app from inside `backend/` so `model.pkl` is found correctly.
+- The frontend falls back to `http://localhost:5000/predict` when `VITE_API_URL` is not set.
 
 ## Author
 

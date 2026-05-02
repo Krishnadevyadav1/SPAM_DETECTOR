@@ -1,14 +1,16 @@
 from flask import Flask, jsonify, request
+import os
 import pickle
 
 app = Flask(__name__)
 
 model = pickle.load(open("model.pkl", "rb"))
+frontend_origin = os.environ.get("FRONTEND_ORIGIN", "http://localhost:5173")
 
 
 @app.after_request
 def add_cors_headers(response):
-    response.headers["Access-Control-Allow-Origin"] = "http://localhost:5173"
+    response.headers["Access-Control-Allow-Origin"] = frontend_origin
     response.headers["Access-Control-Allow-Headers"] = "Content-Type"
     response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
     return response
@@ -36,4 +38,5 @@ def predict():
   
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
