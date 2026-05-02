@@ -2,6 +2,8 @@
 
 Spam Detector is a machine learning web application that classifies text messages as `SPAM` or `NOT SPAM`. It uses a React + Vite frontend and a Flask backend powered by a trained `scikit-learn` model.
 
+Demo:https://spam-detector-orpin.vercel.app/
+
 ## Stack
 
 - React + Vite frontend in `frontend/`
