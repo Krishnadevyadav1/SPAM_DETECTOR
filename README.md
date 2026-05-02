@@ -72,55 +72,6 @@ Response:
 }
 ```
 
-## Deployment
-
-### Frontend on Vercel
-
-Set the Vercel root directory to:
-
-```text
-frontend
-```
-
-Use:
-
-```text
-Build Command: npm run build
-Output Directory: dist
-Install Command: npm install
-```
-
-Add this Vercel environment variable after deploying the backend:
-
-```text
-VITE_API_URL=https://your-render-backend-url.onrender.com/predict
-```
-
-### Backend on Render
-
-Set the Render root directory to:
-
-```text
-backend
-```
-
-Use:
-
-```text
-Build Command: pip install -r requirements.txt
-Start Command: python app.py
-```
-
-Add this Render environment variable:
-
-```text
-FRONTEND_ORIGIN=https://your-vercel-frontend-url.vercel.app
-```
-
-## Notes
-
-- Run the Flask app from inside `backend/` so `model.pkl` is found correctly.
-- The frontend falls back to `http://localhost:5000/predict` when `VITE_API_URL` is not set.
 
 ## Author
 
