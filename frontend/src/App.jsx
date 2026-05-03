@@ -5,10 +5,10 @@ import './App.css'
 function App() {
   
   return (
-    <>
-<Shieldimg/>
-<Form/>
-</>
+    <div className="min-h-screen bg-[#efefef] py-3">
+      <Shieldimg/>
+      <Form/>
+    </div>
   )
 
 }
